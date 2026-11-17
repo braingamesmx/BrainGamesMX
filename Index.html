@@ -1,0 +1,1678 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>BrainGamesMX | Catálogo TCG</title>
+  <meta name="description" content="Lo quieres, lo tienes, solo en BrainGamesMX. Donde los decks se encuentran y las leyendas nacen." />
+
+  <!-- Meta etiquetas para vista previa en WhatsApp -->
+  <meta property="og:title" content="BrainGamesMX — Catálogo en vivo" />
+  <meta property="og:description" content="Lo quieres, lo tienes, solo en BrainGamesMX. Consulta precios y aparta tus cartas para recoger en tienda." />
+  <meta property="og:type" content="website" />
+  <meta name="theme-color" content="#090d16" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --bg-base: #090d16;
+      --bg-surface: #111827;
+      --bg-card: #151e30;
+      --bg-card-hover: #1a253b;
+      --bg-input: #0d1424;
+      --border-subtle: rgba(148, 163, 184, 0.16);
+      --border-strong: rgba(56, 189, 248, 0.4);
+
+      --text-primary: #f8fafc;
+      --text-secondary: #94a3b8;
+      --text-muted: #64748b;
+
+      --accent-blue: #38bdf8;
+      --accent-blue-strong: #0284c7;
+      --accent-gold: #fbbf24;
+      --accent-gold-soft: rgba(251, 191, 36, 0.14);
+      --accent-blue-soft: rgba(56, 189, 248, 0.14);
+
+      --wa-green: #16a34a;
+      --wa-green-hover: #15803d;
+      --danger: #f87171;
+
+      --radius-sm: 8px;
+      --radius-md: 12px;
+      --radius-lg: 16px;
+      --shadow-card: 0 10px 25px -10px rgba(0, 0, 0, 0.65);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background-color: var(--bg-base);
+      background-image:
+        radial-gradient(circle at 10% 0%, rgba(56, 189, 248, 0.12), transparent 36%),
+        radial-gradient(circle at 90% 5%, rgba(251, 191, 36, 0.09), transparent 34%);
+      color: var(--text-primary);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      line-height: 1.4;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 0 12px;
+    }
+
+    @media (min-width: 640px) {
+      .container {
+        padding: 0 20px;
+      }
+    }
+
+    /* ================= HEADER ================= */
+    .site-header {
+      border-bottom: 1px solid var(--border-subtle);
+      background: rgba(9, 13, 22, 0.85);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      padding: 16px 0;
+    }
+
+    .header-inner {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    @media (min-width: 768px) {
+      .header-inner {
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+      }
+    }
+
+    .brand-block {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .brand-title-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .brand-logo {
+      width: 36px;
+      height: 36px;
+      border-radius: 10px;
+      background: linear-gradient(135deg, rgba(56, 189, 248, 0.25), rgba(251, 191, 36, 0.25));
+      border: 1px solid rgba(251, 191, 36, 0.45);
+      display: grid;
+      place-items: center;
+      color: var(--accent-gold);
+      flex-shrink: 0;
+      box-shadow: 0 0 16px rgba(56, 189, 248, 0.15);
+    }
+
+    h1.brand-name {
+      font-family: 'Outfit', sans-serif;
+      font-size: clamp(1.5rem, 4vw, 2rem);
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      background: linear-gradient(90deg, #ffffff 15%, var(--accent-gold) 65%, var(--accent-blue) 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .brand-subtitle {
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+    }
+
+    .header-actions {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    @media (min-width: 768px) {
+      .header-actions {
+        justify-content: flex-end;
+      }
+    }
+
+    .counter-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      padding: 6px 12px;
+      border-radius: 999px;
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--text-primary);
+    }
+
+    .counter-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--accent-gold);
+      box-shadow: 0 0 8px var(--accent-gold);
+    }
+
+    .btn-refresh {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 7px 12px;
+      border-radius: 999px;
+      background: transparent;
+      border: 1px solid rgba(56, 189, 248, 0.35);
+      color: var(--accent-blue);
+      font-family: inherit;
+      font-size: 0.8rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .btn-refresh:hover:not(:disabled) {
+      background: var(--accent-blue-soft);
+      border-color: var(--accent-blue);
+    }
+
+    .btn-refresh:disabled {
+      opacity: 0.6;
+      cursor: wait;
+    }
+
+    .btn-refresh.is-loading svg {
+      animation: spin 0.9s linear infinite;
+    }
+
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+
+    /* ================= CONTROLS / FILTERS ================= */
+    .controls-section {
+      position: sticky;
+      top: 0;
+      z-index: 30;
+      background: rgba(9, 13, 22, 0.92);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border-subtle);
+      padding: 12px 0;
+    }
+
+    .controls-stack {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .search-sort-row {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 10px;
+    }
+
+    @media (min-width: 768px) {
+      .search-sort-row {
+        grid-template-columns: 1.5fr 1fr;
+      }
+    }
+
+    .search-wrap {
+      position: relative;
+      display: flex;
+      align-items: center;
+    }
+
+    .search-icon {
+      position: absolute;
+      left: 13px;
+      color: var(--text-muted);
+      pointer-events: none;
+    }
+
+    .search-input {
+      width: 100%;
+      background: var(--bg-input);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      padding: 11px 38px 11px 40px;
+      color: var(--text-primary);
+      font-family: inherit;
+      font-size: 0.94rem;
+      outline: none;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+
+    .search-input::placeholder {
+      color: var(--text-muted);
+    }
+
+    .search-input:focus {
+      border-color: var(--accent-blue);
+      box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.14);
+    }
+
+    .clear-search-btn {
+      position: absolute;
+      right: 10px;
+      background: rgba(148, 163, 184, 0.16);
+      border: none;
+      color: var(--text-secondary);
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      display: none;
+      place-items: center;
+      cursor: pointer;
+      font-size: 14px;
+    }
+
+    .clear-search-btn.visible {
+      display: grid;
+    }
+
+    .selects-row {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 8px;
+    }
+
+    @media (min-width: 640px) {
+      .selects-row {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    .filter-select {
+      width: 100%;
+      background: var(--bg-input);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      padding: 10px 30px 10px 12px;
+      color: var(--text-primary);
+      font-family: inherit;
+      font-size: 0.84rem;
+      font-weight: 500;
+      outline: none;
+      cursor: pointer;
+      appearance: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%2394a3b8' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 10px center;
+      transition: border-color 0.2s;
+    }
+
+    .filter-select:focus {
+      border-color: var(--accent-blue);
+    }
+
+    .filter-select:disabled {
+      opacity: 0.55;
+      cursor: not-allowed;
+    }
+
+    .pills-bar {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      overflow-x: auto;
+      padding-bottom: 2px;
+      scrollbar-width: none;
+    }
+
+    .pills-bar::-webkit-scrollbar {
+      display: none;
+    }
+
+    .pill-label {
+      font-size: 0.76rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--text-muted);
+      flex-shrink: 0;
+    }
+
+    .pill-btn {
+      flex-shrink: 0;
+      padding: 6px 13px;
+      border-radius: 999px;
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      color: var(--text-secondary);
+      font-family: inherit;
+      font-size: 0.8rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.18s ease;
+      white-space: nowrap;
+    }
+
+    .pill-btn:hover {
+      border-color: var(--accent-blue);
+      color: var(--text-primary);
+    }
+
+    .pill-btn.active {
+      background: linear-gradient(135deg, rgba(56, 189, 248, 0.22), rgba(2, 132, 199, 0.28));
+      border-color: var(--accent-blue);
+      color: #ffffff;
+      box-shadow: 0 0 12px rgba(56, 189, 248, 0.2);
+    }
+
+    .btn-clear-filters {
+      flex-shrink: 0;
+      margin-left: auto;
+      padding: 6px 12px;
+      border-radius: 999px;
+      background: rgba(251, 191, 36, 0.1);
+      border: 1px solid rgba(251, 191, 36, 0.35);
+      color: var(--accent-gold);
+      font-family: inherit;
+      font-size: 0.78rem;
+      font-weight: 600;
+      cursor: pointer;
+      display: none;
+      align-items: center;
+      gap: 4px;
+      transition: background 0.18s;
+    }
+
+    .btn-clear-filters.visible {
+      display: inline-flex;
+    }
+
+    .btn-clear-filters:hover {
+      background: rgba(251, 191, 36, 0.2);
+    }
+
+    /* ================= MAIN CATALOG GRID ================= */
+    main {
+      flex: 1;
+      padding: 18px 0 42px;
+    }
+
+    .status-strip {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 14px;
+      font-size: 0.82rem;
+      color: var(--text-secondary);
+    }
+
+    .products-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+    }
+
+    @media (min-width: 640px) {
+      .products-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 14px;
+      }
+    }
+
+    @media (min-width: 1024px) {
+      .products-grid {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 16px;
+      }
+    }
+
+    @media (min-width: 1280px) {
+      .products-grid {
+        grid-template-columns: repeat(5, minmax(0, 1fr));
+        gap: 18px;
+      }
+    }
+
+    /* ================= PRODUCT CARD ================= */
+    .product-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      padding: 10px;
+      display: flex;
+      flex-direction: column;
+      gap: 9px;
+      box-shadow: var(--shadow-card);
+      transition: transform 0.2s ease, border-color 0.2s ease, background-color 0.2s ease;
+    }
+
+    @media (min-width: 640px) {
+      .product-card {
+        padding: 12px;
+        gap: 10px;
+      }
+    }
+
+    .product-card:hover {
+      transform: translateY(-3px);
+      background: var(--bg-card-hover);
+      border-color: var(--border-strong);
+    }
+
+    .card-top-tags {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 6px;
+      min-height: 22px;
+    }
+
+    .tag-tcg {
+      display: inline-flex;
+      align-items: center;
+      max-width: 100%;
+      padding: 3px 8px;
+      border-radius: 6px;
+      background: var(--accent-blue-soft);
+      border: 1px solid rgba(56, 189, 248, 0.32);
+      color: var(--accent-blue);
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .tag-stock {
+      font-size: 0.66rem;
+      font-weight: 700;
+      padding: 2px 6px;
+      border-radius: 6px;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+
+    .tag-stock.in-stock {
+      background: rgba(34, 197, 94, 0.14);
+      color: #4ade80;
+      border: 1px solid rgba(34, 197, 94, 0.28);
+    }
+
+    .tag-stock.out-stock {
+      background: rgba(248, 113, 113, 0.14);
+      color: #fca5a5;
+      border: 1px solid rgba(248, 113, 113, 0.28);
+    }
+
+    .card-image-btn {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 63 / 88;
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      background: linear-gradient(160deg, #0c1220 0%, #19243a 100%);
+      cursor: zoom-in;
+      padding: 0;
+      display: block;
+    }
+
+    .card-image-btn img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.28s ease;
+    }
+
+    .card-image-btn:hover img {
+      transform: scale(1.04);
+    }
+
+    .zoom-hint {
+      position: absolute;
+      right: 7px;
+      bottom: 7px;
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: rgba(9, 13, 22, 0.78);
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      display: grid;
+      place-items: center;
+      opacity: 0.85;
+      transition: opacity 0.2s, transform 0.2s;
+      pointer-events: none;
+    }
+
+    .card-image-btn:hover .zoom-hint {
+      opacity: 1;
+      transform: scale(1.08);
+    }
+
+    .card-body {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      flex: 1;
+    }
+
+    .card-edition {
+      font-size: 0.72rem;
+      color: var(--text-muted);
+      font-weight: 500;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .card-title {
+      font-family: 'Outfit', sans-serif;
+      font-size: 0.92rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      line-height: 1.28;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      min-height: 2.56em;
+    }
+
+    @media (min-width: 640px) {
+      .card-title {
+        font-size: 0.98rem;
+      }
+    }
+
+    .card-price-row {
+      margin-top: auto;
+      padding-top: 4px;
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 6px;
+    }
+
+    .card-price {
+      font-family: 'Outfit', sans-serif;
+      font-size: 1.08rem;
+      font-weight: 800;
+      color: var(--accent-gold);
+      letter-spacing: -0.01em;
+    }
+
+    @media (min-width: 640px) {
+      .card-price {
+        font-size: 1.18rem;
+      }
+    }
+
+    .btn-whatsapp {
+      width: 100%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 7px;
+      padding: 9px 10px;
+      border-radius: var(--radius-md);
+      background: var(--wa-green);
+      color: #ffffff;
+      text-decoration: none;
+      font-size: 0.82rem;
+      font-weight: 700;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      transition: background-color 0.18s ease, transform 0.15s ease;
+    }
+
+    .btn-whatsapp:hover {
+      background: var(--wa-green-hover);
+    }
+
+    .btn-whatsapp:active {
+      transform: scale(0.98);
+    }
+
+    /* ================= SKELETON & STATES ================= */
+    .skeleton-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      padding: 12px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .sk-box {
+      border-radius: 8px;
+      background: linear-gradient(90deg, #192338 25%, #23314d 50%, #192338 75%);
+      background-size: 200% 100%;
+      animation: shimmer 1.4s infinite;
+    }
+
+    .sk-img { aspect-ratio: 63 / 88; width: 100%; }
+    .sk-line { height: 14px; width: 85%; }
+    .sk-line.short { width: 55%; }
+    .sk-btn { height: 36px; width: 100%; }
+
+    @keyframes shimmer {
+      0% { background-position: 200% 0; }
+      100% { background-position: -200% 0; }
+    }
+
+    .state-box {
+      grid-column: 1 / -1;
+      text-align: center;
+      padding: 48px 20px;
+      background: var(--bg-surface);
+      border: 1px dashed var(--border-subtle);
+      border-radius: var(--radius-lg);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .state-box h3 {
+      font-family: 'Outfit', sans-serif;
+      font-size: 1.15rem;
+      color: var(--text-primary);
+    }
+
+    .state-box p {
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+      max-width: 440px;
+    }
+
+    .btn-primary-outline {
+      padding: 9px 18px;
+      border-radius: 999px;
+      background: var(--accent-blue-soft);
+      border: 1px solid var(--accent-blue);
+      color: #ffffff;
+      font-family: inherit;
+      font-size: 0.85rem;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    /* ================= IMAGE ZOOM MODAL ================= */
+    .modal-backdrop {
+      position: fixed;
+      inset: 0;
+      z-index: 100;
+      background: rgba(5, 8, 15, 0.88);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 16px;
+    }
+
+    .modal-backdrop.open {
+      display: flex;
+      animation: fadeIn 0.18s ease-out;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    .modal-dialog {
+      position: relative;
+      width: 100%;
+      max-width: 520px;
+      max-height: 92vh;
+      background: var(--bg-surface);
+      border: 1px solid rgba(56, 189, 248, 0.35);
+      border-radius: var(--radius-lg);
+      padding: 14px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.85);
+      overflow-y: auto;
+    }
+
+    .modal-header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .modal-close {
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      background: rgba(148, 163, 184, 0.14);
+      border: 1px solid var(--border-subtle);
+      color: var(--text-primary);
+      font-size: 1.2rem;
+      cursor: pointer;
+      display: grid;
+      place-items: center;
+      flex-shrink: 0;
+    }
+
+    .modal-close:hover {
+      background: rgba(248, 113, 113, 0.22);
+      border-color: var(--danger);
+    }
+
+    .modal-image-wrap {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      background: #080c14;
+      border-radius: var(--radius-md);
+      padding: 8px;
+      border: 1px solid var(--border-subtle);
+    }
+
+    .modal-image-wrap img {
+      max-width: 100%;
+      max-height: 60vh;
+      width: auto;
+      height: auto;
+      object-fit: contain;
+      border-radius: 8px;
+    }
+
+    .modal-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .modal-price {
+      font-family: 'Outfit', sans-serif;
+      font-size: 1.35rem;
+      font-weight: 800;
+      color: var(--accent-gold);
+    }
+
+    .modal-wa-wrap {
+      flex: 1;
+      min-width: 180px;
+    }
+
+    /* ================= BACK TO TOP ================= */
+    .btn-top {
+      position: fixed;
+      right: 16px;
+      bottom: 20px;
+      z-index: 40;
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      background: var(--bg-card);
+      border: 1px solid var(--accent-blue);
+      color: var(--accent-blue);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+      display: none;
+      place-items: center;
+      cursor: pointer;
+    }
+
+    .btn-top.visible {
+      display: grid;
+    }
+
+    /* ================= FOOTER ================= */
+    .site-footer {
+      margin-top: auto;
+      border-top: 1px solid var(--border-subtle);
+      background: #070a12;
+      padding: 24px 16px;
+      text-align: center;
+    }
+
+    .footer-quote {
+      font-family: 'Outfit', sans-serif;
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--accent-gold);
+      margin-bottom: 6px;
+    }
+
+    .footer-note {
+      font-size: 0.86rem;
+      color: var(--text-secondary);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ENCABEZADO -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <div class="brand-block">
+        <div class="brand-title-row">
+          <div class="brand-logo" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="4" y="3" width="12" height="17" rx="2" />
+              <path d="M16 7h2a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H9a2 2 0 0 1-2-2v-1" />
+            </svg>
+          </div>
+          <h1 class="brand-name">BrainGamesMX</h1>
+        </div>
+        <p class="brand-subtitle">Lo quieres, lo tienes, solo en BrainGamesMX</p>
+      </div>
+
+      <div class="header-actions">
+        <div class="counter-badge" id="productCounter">
+          <span class="counter-dot"></span>
+          <span id="counterText">Cargando catálogo...</span>
+        </div>
+
+        <button type="button" class="btn-refresh" id="refreshBtn" title="Obtener precios más recientes">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 12a9 9 0 1 1-2.64-6.36" />
+            <polyline points="21 3 21 9 15 9" />
+          </svg>
+          <span>Actualizar precios</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- BUSCADOR, FILTROS Y ORDENAMIENTO -->
+  <section class="controls-section" aria-label="Búsqueda y filtros">
+    <div class="container controls-stack">
+      <div class="search-sort-row">
+        <div class="search-wrap">
+          <svg class="search-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="11" cy="11" r="8" />
+            <path d="m21 21-4.3-4.3" />
+          </svg>
+          <input
+            type="search"
+            id="searchInput"
+            class="search-input"
+            placeholder="Buscar carta, producto o TCG..."
+            autocomplete="off"
+          />
+          <button type="button" id="clearSearchBtn" class="clear-search-btn" aria-label="Limpiar búsqueda">&times;</button>
+        </div>
+
+        <div class="selects-row">
+          <select id="editionSelect" class="filter-select" aria-label="Filtrar por edición">
+            <option value="all">Edición: Todas</option>
+          </select>
+
+          <select id="availabilitySelect" class="filter-select" aria-label="Filtrar por disponibilidad">
+            <option value="all">Disponibilidad: Todas</option>
+          </select>
+
+          <select id="sortSelect" class="filter-select" aria-label="Ordenar productos">
+            <option value="default">Ordenar: Destacados</option>
+            <option value="price-asc">Precio: menor a mayor</option>
+            <option value="price-desc">Precio: mayor a menor</option>
+            <option value="name-asc">Nombre: A - Z</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="pills-bar" id="gamePillsBar">
+        <span class="pill-label">Juego:</span>
+        <button type="button" class="pill-btn active" data-game="all">Todos</button>
+        <button type="button" class="btn-clear-filters" id="clearFiltersBtn">
+          <span>Limpiar filtros</span>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- CATÁLOGO -->
+  <main class="container">
+    <div class="status-strip">
+      <span id="resultsSummary">Conectando con la lista de precios...</span>
+      <span id="lastUpdatedText"></span>
+    </div>
+
+    <div class="products-grid" id="productsGrid">
+      <!-- Skeleton inicial -->
+    </div>
+  </main>
+
+  <!-- MODAL ZOOM DE CARTA -->
+  <div class="modal-backdrop" id="imageModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <div class="modal-dialog">
+      <div class="modal-header">
+        <div>
+          <span class="tag-tcg" id="modalTcg">TCG</span>
+          <h2 id="modalTitle" style="font-family: 'Outfit', sans-serif; font-size: 1.1rem; margin-top: 6px;">Nombre del producto</h2>
+        </div>
+        <button type="button" class="modal-close" id="modalCloseBtn" aria-label="Cerrar vista ampliada">&times;</button>
+      </div>
+
+      <div class="modal-image-wrap">
+        <img id="modalImg" src="" alt="" />
+      </div>
+
+      <div class="modal-footer">
+        <div class="modal-price" id="modalPrice">$0 MXN</div>
+        <div class="modal-wa-wrap">
+          <a id="modalWaBtn" href="#" target="_blank" rel="noopener noreferrer" class="btn-whatsapp">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M12.031 2c-5.516 0-9.969 4.453-9.969 9.969 0 1.766.469 3.484 1.344 5l-1.406 5.156 5.281-1.375a9.93 9.93 0 0 0 4.75 1.219h.004c5.512 0 9.965-4.453 9.965-9.969 0-2.66-1.035-5.164-2.918-7.047A9.903 9.903 0 0 0 12.031 2zm5.809 14.172c-.246.691-1.434 1.32-1.977 1.398-.504.074-1.141.105-1.844-.117-.426-.137-.973-.32-1.676-.625-2.949-1.273-4.875-4.242-5.023-4.438-.145-.199-1.199-1.598-1.199-3.047 0-1.449.758-2.16 1.027-2.453.27-.293.586-.367.781-.367.195 0 .391.004.563.012.18.008.422-.07.66.504.246.59.836 2.043.91 2.191.074.148.121.32.023.516-.098.199-.148.32-.293.492-.148.172-.309.383-.441.516-.148.148-.301.309-.129.605.172.297.766 1.266 1.645 2.047 1.133 1.012 2.086 1.324 2.383 1.473.297.148.469.125.641-.074.172-.199.738-.859.934-1.156.195-.297.391-.246.66-.148.27.098 1.719.813 2.012.961.297.148.492.223.566.344.074.125.074.715-.172 1.406z" />
+            </svg>
+            <span>Apartar en tienda</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- BOTÓN VOLVER ARRIBA -->
+  <button type="button" id="backToTopBtn" class="btn-top" aria-label="Volver arriba">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+      <path d="m18 15-6-6-6 6" />
+    </svg>
+  </button>
+
+  <!-- PIE DE PÁGINA -->
+  <footer class="site-footer">
+    <p class="footer-quote">"Donde los decks se encuentran y las leyendas nacen"</p>
+    <p class="footer-note">Envios a costo del comprador!</p>
+  </footer>
+
+  <script>
+    (function () {
+      'use strict';
+
+      const SHEET_ID = '1s7H2yvaG8SIBs8xohvDWO2x8dg4hFFHgaGiTdAfsBts';
+      const WHATSAPP_NUMBER = '526461322788';
+
+      // Imagen SVG de respaldo elegante en proporción vertical de carta TCG
+      const FALLBACK_CARD_IMAGE =
+        'data:image/svg+xml;charset=UTF-8,' +
+        encodeURIComponent(
+          `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 315 440">
+            <defs>
+              <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0%" stop-color="#0f172a"/>
+                <stop offset="100%" stop-color="#1e293b"/>
+              </linearGradient>
+              <linearGradient id="gold" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0%" stop-color="#fbbf24"/>
+                <stop offset="100%" stop-color="#38bdf8"/>
+              </linearGradient>
+            </defs>
+            <rect width="315" height="440" rx="18" fill="url(#bg)"/>
+            <rect x="14" y="14" width="287" height="412" rx="12" fill="none" stroke="url(#gold)" stroke-width="2" stroke-opacity="0.45"/>
+            <circle cx="157.5" cy="185" r="46" fill="none" stroke="#38bdf8" stroke-width="2.5" stroke-opacity="0.5"/>
+            <path d="M138 173h39v24h-39z" fill="none" stroke="#fbbf24" stroke-width="2.5" stroke-linejoin="round"/>
+            <path d="M138 192l11-10 8 7 10-12 10 15" fill="none" stroke="#fbbf24" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+            <text x="157.5" y="268" text-anchor="middle" fill="#f8fafc" font-family="sans-serif" font-size="16" font-weight="700">BrainGamesMX</text>
+            <text x="157.5" y="292" text-anchor="middle" fill="#94a3b8" font-family="sans-serif" font-size="12">Imagen no disponible</text>
+          </svg>`
+        );
+
+      // Estado de la aplicación
+      const state = {
+        products: [],
+        filtered: [],
+        search: '',
+        game: 'all',
+        edition: 'all',
+        availability: 'all',
+        sort: 'default',
+        hasEditionColumn: false,
+        hasAvailabilityColumn: false
+      };
+
+      // Referencias DOM
+      const els = {
+        productsGrid: document.getElementById('productsGrid'),
+        counterText: document.getElementById('counterText'),
+        resultsSummary: document.getElementById('resultsSummary'),
+        lastUpdatedText: document.getElementById('lastUpdatedText'),
+        refreshBtn: document.getElementById('refreshBtn'),
+        searchInput: document.getElementById('searchInput'),
+        clearSearchBtn: document.getElementById('clearSearchBtn'),
+        gamePillsBar: document.getElementById('gamePillsBar'),
+        editionSelect: document.getElementById('editionSelect'),
+        availabilitySelect: document.getElementById('availabilitySelect'),
+        sortSelect: document.getElementById('sortSelect'),
+        clearFiltersBtn: document.getElementById('clearFiltersBtn'),
+        imageModal: document.getElementById('imageModal'),
+        modalCloseBtn: document.getElementById('modalCloseBtn'),
+        modalTcg: document.getElementById('modalTcg'),
+        modalTitle: document.getElementById('modalTitle'),
+        modalImg: document.getElementById('modalImg'),
+        modalPrice: document.getElementById('modalPrice'),
+        modalWaBtn: document.getElementById('modalWaBtn'),
+        backToTopBtn: document.getElementById('backToTopBtn')
+      };
+
+      // Normaliza texto para comparar encabezados o búsquedas sin acentos
+      function normalizeText(value) {
+        return String(value || '')
+          .trim()
+          .toLowerCase()
+          .normalize('NFD')
+          .replace(/[\u0300-\u036f]/g, '');
+      }
+
+      // Parser CSV robusto (soporta comillas, saltos de línea internos y comas dentro de comillas)
+      function parseCSV(csvText) {
+        const rows = [];
+        let currentRow = [];
+        let currentField = '';
+        let insideQuotes = false;
+
+        for (let i = 0; i < csvText.length; i++) {
+          const char = csvText[i];
+          const nextChar = csvText[i + 1];
+
+          if (insideQuotes) {
+            if (char === '"' && nextChar === '"') {
+              currentField += '"';
+              i++;
+            } else if (char === '"') {
+              insideQuotes = false;
+            } else {
+              currentField += char;
+            }
+          } else {
+            if (char === '"') {
+              insideQuotes = true;
+            } else if (char === ',') {
+              currentRow.push(currentField);
+              currentField = '';
+            } else if (char === '\r' && nextChar === '\n') {
+              currentRow.push(currentField);
+              rows.push(currentRow);
+              currentRow = [];
+              currentField = '';
+              i++;
+            } else if (char === '\n' || char === '\r') {
+              currentRow.push(currentField);
+              rows.push(currentRow);
+              currentRow = [];
+              currentField = '';
+            } else {
+              currentField += char;
+            }
+          }
+        }
+
+        if (currentField.length > 0 || currentRow.length > 0) {
+          currentRow.push(currentField);
+          rows.push(currentRow);
+        }
+
+        return rows;
+      }
+
+      // Convierte texto de precio a número válido
+      function parsePrice(rawPrice) {
+        const cleaned = String(rawPrice || '')
+          .replace(/[^0-9.,-]/g, '')
+          .replace(/,/g, '');
+        const num = parseFloat(cleaned);
+        return Number.isFinite(num) ? num : 0;
+      }
+
+      // Formatea número a moneda MXN (ej. $1,250 MXN)
+      function formatCurrency(amount) {
+        const hasDecimals = Math.round(amount * 100) % 100 !== 0;
+        const formatted = new Intl.NumberFormat('es-MX', {
+          minimumFractionDigits: hasDecimals ? 2 : 0,
+          maximumFractionDigits: hasDecimals ? 2 : 0
+        }).format(amount);
+        return `$${formatted} MXN`;
+      }
+
+      // Construye enlace de WhatsApp codificado
+      function buildWhatsAppUrl(product) {
+        const formattedPrice = new Intl.NumberFormat('es-MX', {
+          minimumFractionDigits: Math.round(product.price * 100) % 100 !== 0 ? 2 : 0,
+          maximumFractionDigits: 2
+        }).format(product.price);
+
+        const details = [product.tcg, product.barcode].filter(Boolean).join(', ');
+        const message = `Hola BrainGamesMX, me interesa apartar para recoger en tienda: ${product.name} (${details}) - $${formattedPrice} MXN`;
+        return `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
+      }
+
+      // Muestra esqueletos de carga
+      function renderSkeletons(count = 10) {
+        const frag = document.createDocumentFragment();
+        for (let i = 0; i < count; i++) {
+          const card = document.createElement('div');
+          card.className = 'skeleton-card';
+          card.innerHTML = `
+            <div class="sk-box sk-img"></div>
+            <div class="sk-box sk-line"></div>
+            <div class="sk-box sk-line short"></div>
+            <div class="sk-box sk-btn"></div>
+          `;
+          frag.appendChild(card);
+        }
+        els.productsGrid.replaceChildren(frag);
+      }
+
+      // Obtiene CSV desde Google Sheets evitando caché con timestamp
+      async function fetchSheetData() {
+        const timestamp = Date.now();
+        const urls = [
+          `https://docs.google.com/spreadsheets/d/${SHEET_ID}/export?format=csv&t=${timestamp}`,
+          `https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?tqx=out:csv&t=${timestamp}`
+        ];
+
+        els.refreshBtn.disabled = true;
+        els.refreshBtn.classList.add('is-loading');
+
+        if (state.products.length === 0) {
+          renderSkeletons();
+        }
+
+        let csvText = null;
+        let lastError = null;
+
+        for (const url of urls) {
+          try {
+            const response = await fetch(url, { cache: 'no-store' });
+            if (!response.ok) {
+              throw new Error(`HTTP ${response.status}`);
+            }
+            const text = await response.text();
+            if (text && !text.trim().startsWith('<!DOCTYPE html')) {
+              csvText = text;
+              break;
+            }
+          } catch (err) {
+            lastError = err;
+          }
+        }
+
+        els.refreshBtn.disabled = false;
+        els.refreshBtn.classList.remove('is-loading');
+
+        if (!csvText) {
+          renderError(lastError);
+          return;
+        }
+
+        processCSV(csvText);
+      }
+
+      function processCSV(csvText) {
+        const rows = parseCSV(csvText);
+        if (rows.length < 2) {
+          state.products = [];
+          renderEmpty('El catálogo aún no tiene productos cargados.');
+          return;
+        }
+
+        const headers = rows[0].map((h) => normalizeText(h));
+        const findCol = (candidates) =>
+          headers.findIndex((h) => candidates.some((c) => h === c || h.includes(c)));
+
+        const idxTcg = findCol(['tcg', 'juego', 'game']);
+        const idxProducto = findCol(['producto', 'nombre', 'carta', 'title']);
+        const idxPrecio = findCol(['precio', 'price', 'costo']);
+        const idxImagen = findCol(['imagen_url', 'imagen url', 'imagen', 'img', 'foto', 'url']);
+        const idxEdicion = findCol(['edicion', 'expansion', 'set']);
+        const idxDisponibilidad = findCol(['disponibilidad', 'stock', 'estado', 'estatus']);
+        const idxCodigo = findCol(['codigo_barra', 'codigo barra', 'codigo', 'barcode', 'sku']);
+
+        state.hasEditionColumn = idxEdicion !== -1;
+        state.hasAvailabilityColumn = idxDisponibilidad !== -1;
+
+        const parsedProducts = [];
+
+        for (let i = 1; i < rows.length; i++) {
+          const row = rows[i];
+          if (!row || row.every((cell) => !String(cell || '').trim())) continue;
+
+          const name = idxProducto !== -1 ? String(row[idxProducto] || '').trim() : '';
+          if (!name) continue; // Ignorar filas vacías o sin nombre de producto
+
+          const tcg = idxTcg !== -1 ? String(row[idxTcg] || '').trim() || 'TCG' : 'TCG';
+          const rawPrice = idxPrecio !== -1 ? row[idxPrecio] : '0';
+          const price = parsePrice(rawPrice);
+          const imageUrl = idxImagen !== -1 ? String(row[idxImagen] || '').trim() : '';
+          const edition = idxEdicion !== -1 ? String(row[idxEdicion] || '').trim() : '';
+          const rawAvailability = idxDisponibilidad !== -1 ? String(row[idxDisponibilidad] || '').trim() : '';
+          const barcode = idxCodigo !== -1 ? String(row[idxCodigo] || '').trim() : '';
+
+          const normAvail = normalizeText(rawAvailability);
+          const isOut =
+            normAvail === '0' ||
+            normAvail.includes('agotado') ||
+            normAvail.includes('sin stock') ||
+            normAvail.includes('no disponible');
+
+          const availabilityLabel = rawAvailability || (isOut ? 'Agotado' : 'Disponible');
+
+          parsedProducts.push({
+            id: i,
+            name,
+            tcg,
+            price,
+            imageUrl,
+            edition,
+            availabilityLabel,
+            inStock: !isOut,
+            barcode,
+            searchKey: normalizeText(`${name} ${tcg} ${edition} ${barcode}`)
+          });
+        }
+
+        state.products = parsedProducts;
+        populateFilters();
+        applyFilters();
+
+        const now = new Date();
+        els.lastUpdatedText.textContent = `Actualizado: ${now.toLocaleTimeString('es-MX', {
+          hour: '2-digit',
+          minute: '2-digit'
+        })}`;
+      }
+
+      // Llena píldoras de Juego y selectores de Edición / Disponibilidad
+      function populateFilters() {
+        const games = [...new Set(state.products.map((p) => p.tcg).filter(Boolean))].sort((a, b) =>
+          a.localeCompare(b, 'es')
+        );
+
+        // Construir píldoras de Juego
+        const pillsFrag = document.createDocumentFragment();
+        const label = document.createElement('span');
+        label.className = 'pill-label';
+        label.textContent = 'Juego:';
+        pillsFrag.appendChild(label);
+
+        const allBtn = document.createElement('button');
+        allBtn.type = 'button';
+        allBtn.className = `pill-btn${state.game === 'all' ? ' active' : ''}`;
+        allBtn.dataset.game = 'all';
+        allBtn.textContent = 'Todos';
+        pillsFrag.appendChild(allBtn);
+
+        games.forEach((game) => {
+          const btn = document.createElement('button');
+          btn.type = 'button';
+          btn.className = `pill-btn${state.game === game ? ' active' : ''}`;
+          btn.dataset.game = game;
+          btn.textContent = game;
+          pillsFrag.appendChild(btn);
+        });
+
+        pillsFrag.appendChild(els.clearFiltersBtn);
+        els.gamePillsBar.replaceChildren(pillsFrag);
+
+        // Selector de Edición
+        const editions = [...new Set(state.products.map((p) => p.edition).filter(Boolean))].sort((a, b) =>
+          a.localeCompare(b, 'es')
+        );
+        els.editionSelect.innerHTML = '<option value="all">Edición: Todas</option>';
+        if (editions.length > 0) {
+          els.editionSelect.disabled = false;
+          editions.forEach((ed) => {
+            const opt = document.createElement('option');
+            opt.value = ed;
+            opt.textContent = `Edición: ${ed}`;
+            els.editionSelect.appendChild(opt);
+          });
+        } else {
+          els.editionSelect.disabled = true;
+          els.editionSelect.innerHTML = '<option value="all">Edición: General</option>';
+        }
+
+        // Selector de Disponibilidad
+        els.availabilitySelect.innerHTML = `
+          <option value="all">Disponibilidad: Todas</option>
+          <option value="available">Solo disponibles</option>
+          <option value="out">Agotados</option>
+        `;
+        if (!state.hasAvailabilityColumn) {
+          els.availabilitySelect.value = 'all';
+        }
+      }
+
+      // Aplica búsqueda, filtros y ordenamiento
+      function applyFilters() {
+        const term = normalizeText(state.search);
+
+        let list = state.products.filter((p) => {
+          if (term && !p.searchKey.includes(term)) return false;
+          if (state.game !== 'all' && p.tcg !== state.game) return false;
+          if (state.edition !== 'all' && p.edition !== state.edition) return false;
+          if (state.availability === 'available' && !p.inStock) return false;
+          if (state.availability === 'out' && p.inStock) return false;
+          return true;
+        });
+
+        if (state.sort === 'price-asc') {
+          list = [...list].sort((a, b) => a.price - b.price);
+        } else if (state.sort === 'price-desc') {
+          list = [...list].sort((a, b) => b.price - a.price);
+        } else if (state.sort === 'name-asc') {
+          list = [...list].sort((a, b) => a.name.localeCompare(b.name, 'es'));
+        }
+
+        state.filtered = list;
+
+        const hasActiveFilters =
+          term.length > 0 ||
+          state.game !== 'all' ||
+          state.edition !== 'all' ||
+          state.availability !== 'all' ||
+          state.sort !== 'default';
+
+        els.clearFiltersBtn.classList.toggle('visible', hasActiveFilters);
+        els.clearSearchBtn.classList.toggle('visible', state.search.length > 0);
+
+        const availableCount = state.products.filter((p) => p.inStock).length;
+        els.counterText.textContent = `${availableCount} producto${availableCount === 1 ? '' : 's'} disponible${availableCount === 1 ? '' : 's'}`;
+        els.resultsSummary.textContent = `Mostrando ${list.length} de ${state.products.length} productos`;
+
+        renderGrid(list);
+      }
+
+      // Renderiza las tarjetas de producto
+      function renderGrid(products) {
+        if (products.length === 0) {
+          renderEmpty('No encontramos cartas o productos con esos filtros.');
+          return;
+        }
+
+        const frag = document.createDocumentFragment();
+
+        products.forEach((product) => {
+          const card = document.createElement('article');
+          card.className = 'product-card';
+
+          // Etiqueta superior con PRODUCTO / TCG y disponibilidad
+          const topTags = document.createElement('div');
+          topTags.className = 'card-top-tags';
+
+          const tcgBadge = document.createElement('span');
+          tcgBadge.className = 'tag-tcg';
+          tcgBadge.textContent = `PRODUCTO • ${product.tcg}`;
+          topTags.appendChild(tcgBadge);
+
+          if (state.hasAvailabilityColumn) {
+            const stockBadge = document.createElement('span');
+            stockBadge.className = `tag-stock ${product.inStock ? 'in-stock' : 'out-stock'}`;
+            stockBadge.textContent = product.inStock ? 'Disponible' : 'Agotado';
+            topTags.appendChild(stockBadge);
+          }
+
+          // Imagen vertical clicable para Zoom
+          const imgBtn = document.createElement('button');
+          imgBtn.type = 'button';
+          imgBtn.className = 'card-image-btn';
+          imgBtn.setAttribute('aria-label', `Ampliar imagen de ${product.name}`);
+
+          const img = document.createElement('img');
+          img.loading = 'lazy';
+          img.alt = product.name;
+          img.src = product.imageUrl || FALLBACK_CARD_IMAGE;
+          img.addEventListener('error', function onImgError() {
+            if (img.src !== FALLBACK_CARD_IMAGE) {
+              img.src = FALLBACK_CARD_IMAGE;
+            }
+          });
+
+          const zoomHint = document.createElement('span');
+          zoomHint.className = 'zoom-hint';
+          zoomHint.setAttribute('aria-hidden', 'true');
+          zoomHint.innerHTML = `
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/><path d="M11 8v6"/><path d="M8 11h6"/>
+            </svg>
+          `;
+
+          imgBtn.appendChild(img);
+          imgBtn.appendChild(zoomHint);
+          imgBtn.addEventListener('click', () => openModal(product));
+
+          // Cuerpo: Nombre y Precio
+          const body = document.createElement('div');
+          body.className = 'card-body';
+
+          if (product.edition) {
+            const ed = document.createElement('div');
+            ed.className = 'card-edition';
+            ed.textContent = product.edition;
+            body.appendChild(ed);
+          }
+
+          const title = document.createElement('h2');
+          title.className = 'card-title';
+          title.textContent = product.name;
+          title.title = product.name;
+
+          const priceRow = document.createElement('div');
+          priceRow.className = 'card-price-row';
+
+          const priceEl = document.createElement('span');
+          priceEl.className = 'card-price';
+          priceEl.textContent = formatCurrency(product.price);
+
+          priceRow.appendChild(priceEl);
+          body.appendChild(title);
+          body.appendChild(priceRow);
+
+          // Botón WhatsApp
+          const waBtn = document.createElement('a');
+          waBtn.className = 'btn-whatsapp';
+          waBtn.href = buildWhatsAppUrl(product);
+          waBtn.target = '_blank';
+          waBtn.rel = 'noopener noreferrer';
+          waBtn.innerHTML = `
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M12.031 2c-5.516 0-9.969 4.453-9.969 9.969 0 1.766.469 3.484 1.344 5l-1.406 5.156 5.281-1.375a9.93 9.93 0 0 0 4.75 1.219h.004c5.512 0 9.965-4.453 9.965-9.969 0-2.66-1.035-5.164-2.918-7.047A9.903 9.903 0 0 0 12.031 2zm5.809 14.172c-.246.691-1.434 1.32-1.977 1.398-.504.074-1.141.105-1.844-.117-.426-.137-.973-.32-1.676-.625-2.949-1.273-4.875-4.242-5.023-4.438-.145-.199-1.199-1.598-1.199-3.047 0-1.449.758-2.16 1.027-2.453.27-.293.586-.367.781-.367.195 0 .391.004.563.012.18.008.422-.07.66.504.246.59.836 2.043.91 2.191.074.148.121.32.023.516-.098.199-.148.32-.293.492-.148.172-.309.383-.441.516-.148.148-.301.309-.129.605.172.297.766 1.266 1.645 2.047 1.133 1.012 2.086 1.324 2.383 1.473.297.148.469.125.641-.074.172-.199.738-.859.934-1.156.195-.297.391-.246.66-.148.27.098 1.719.813 2.012.961.297.148.492.223.566.344.074.125.074.715-.172 1.406z" />
+            </svg>
+            <span>Apartar en tienda</span>
+          `;
+
+          card.appendChild(topTags);
+          card.appendChild(imgBtn);
+          card.appendChild(body);
+          card.appendChild(waBtn);
+          frag.appendChild(card);
+        });
+
+        els.productsGrid.replaceChildren(frag);
+      }
+
+      function renderEmpty(message) {
+        const box = document.createElement('div');
+        box.className = 'state-box';
+
+        const title = document.createElement('h3');
+        title.textContent = 'Sin resultados';
+
+        const p = document.createElement('p');
+        p.textContent = message;
+
+        const btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = 'btn-primary-outline';
+        btn.textContent = 'Restablecer filtros';
+        btn.addEventListener('click', resetFilters);
+
+        box.appendChild(title);
+        box.appendChild(p);
+        box.appendChild(btn);
+        els.productsGrid.replaceChildren(box);
+      }
+
+      function renderError(err) {
+        els.counterText.textContent = 'Sin conexión';
+        els.resultsSummary.textContent = 'No se pudo cargar la hoja de precios.';
+
+        const box = document.createElement('div');
+        box.className = 'state-box';
+
+        const title = document.createElement('h3');
+        title.textContent = 'No pudimos conectar con el catálogo';
+
+        const p = document.createElement('p');
+        p.textContent =
+          'Verifica tu conexión a internet o asegúrate de que la hoja de Google Sheets tenga acceso público de lectura.';
+
+        const btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = 'btn-primary-outline';
+        btn.textContent = 'Reintentar ahora';
+        btn.addEventListener('click', fetchSheetData);
+
+        box.appendChild(title);
+        box.appendChild(p);
+        box.appendChild(btn);
+        els.productsGrid.replaceChildren(box);
+        if (err) console.error('Error cargando Google Sheets:', err);
+      }
+
+      function resetFilters() {
+        state.search = '';
+        state.game = 'all';
+        state.edition = 'all';
+        state.availability = 'all';
+        state.sort = 'default';
+
+        els.searchInput.value = '';
+        els.editionSelect.value = 'all';
+        els.availabilitySelect.value = 'all';
+        els.sortSelect.value = 'default';
+
+        els.gamePillsBar.querySelectorAll('.pill-btn').forEach((btn) => {
+          btn.classList.toggle('active', btn.dataset.game === 'all');
+        });
+
+        applyFilters();
+      }
+
+      // Modal Zoom de carta
+      function openModal(product) {
+        els.modalTcg.textContent = `PRODUCTO • ${product.tcg}`;
+        els.modalTitle.textContent = product.name;
+        els.modalPrice.textContent = formatCurrency(product.price);
+        els.modalImg.alt = product.name;
+        els.modalImg.src = product.imageUrl || FALLBACK_CARD_IMAGE;
+        els.modalImg.onerror = () => {
+          if (els.modalImg.src !== FALLBACK_CARD_IMAGE) {
+            els.modalImg.src = FALLBACK_CARD_IMAGE;
+          }
+        };
+        els.modalWaBtn.href = buildWhatsAppUrl(product);
+
+        els.imageModal.classList.add('open');
+        document.body.style.overflow = 'hidden';
+      }
+
+      function closeModal() {
+        els.imageModal.classList.remove('open');
+        document.body.style.overflow = '';
+      }
+
+      // Eventos
+      els.refreshBtn.addEventListener('click', fetchSheetData);
+
+      els.searchInput.addEventListener('input', (e) => {
+        state.search = e.target.value;
+        applyFilters();
+      });
+
+      els.clearSearchBtn.addEventListener('click', () => {
+        state.search = '';
+        els.searchInput.value = '';
+        els.searchInput.focus();
+        applyFilters();
+      });
+
+      els.gamePillsBar.addEventListener('click', (e) => {
+        const pill = e.target.closest('.pill-btn');
+        if (!pill) return;
+        state.game = pill.dataset.game;
+        els.gamePillsBar.querySelectorAll('.pill-btn').forEach((btn) => {
+          btn.classList.toggle('active', btn === pill);
+        });
+        applyFilters();
+      });
+
+      els.editionSelect.addEventListener('change', (e) => {
+        state.edition = e.target.value;
+        applyFilters();
+      });
+
+      els.availabilitySelect.addEventListener('change', (e) => {
+        state.availability = e.target.value;
+        applyFilters();
+      });
+
+      els.sortSelect.addEventListener('change', (e) => {
+        state.sort = e.target.value;
+        applyFilters();
+      });
+
+      els.clearFiltersBtn.addEventListener('click', resetFilters);
+
+      els.modalCloseBtn.addEventListener('click', closeModal);
+      els.imageModal.addEventListener('click', (e) => {
+        if (e.target === els.imageModal) closeModal();
+      });
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && els.imageModal.classList.contains('open')) {
+          closeModal();
+        }
+      });
+
+      window.addEventListener('scroll', () => {
+        els.backToTopBtn.classList.toggle('visible', window.scrollY > 420);
+      }, { passive: true });
+
+      els.backToTopBtn.addEventListener('click', () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+
+      // Inicializar catálogo
+      fetchSheetData();
+    })();
+  </script>
+</body>
+</html>
